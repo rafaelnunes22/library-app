@@ -4,13 +4,20 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import { Grid } from "./components/Grid"
+import { Grid } from "./components/Grid";
+import { configureStore } from "@reduxjs/toolkit";
+import { Provider } from "react-redux";
+import { createStore } from 'redux';
+
+import { store } from "./app/store";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Grid>
-      <App />
-    </Grid>
+    <Provider store={store}>
+      <Grid>
+        <App />
+      </Grid>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
