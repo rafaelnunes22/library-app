@@ -1,5 +1,9 @@
 import React from "react";
 
+import {
+  Title
+} from "./styles";
+
 export function Login() {
-  return <h1>Login</h1>
+  return <Title>Login</Title>
 }
