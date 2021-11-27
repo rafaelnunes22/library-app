@@ -22,7 +22,7 @@ export function Login() {
 
   useEffect(() => {
     if (token) {
-      navigate("/search")
+      navigate("/books")
     }
   }, [user])
 
@@ -33,7 +33,7 @@ export function Login() {
       <Container>
         <Title>Login</Title>
         <Input onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
-        <Input onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+        <Input type="password" onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
         <Button onClick={() => dispatch(login(username, password))}>Login</Button>
       </Container>
     </Wrapper>

@@ -3,6 +3,10 @@ import styled from "styled-components";
 export const Button = styled.button`
   color: white;
   background-color: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
   
   cursor: pointer;
 
@@ -26,6 +30,12 @@ export const Button = styled.button`
   }
 
   &:active {
+    border-color: white;
+
+    background-color: white;
+    color: black;
+
+    transition: 200ms;
     opacity: 0.8;
   }
 `;

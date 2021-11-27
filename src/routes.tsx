@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 import { Login } from "./pages/Login";
-import { Search } from "./pages/Search";
+import { Search } from "./pages/Books";
 import { useAppSelector } from "./app/hooks";
 
 import { BrowserRouter, Routes as ReactRouterRoutes, Route, RouteProps, Navigate } from "react-router-dom";
@@ -19,7 +19,7 @@ export function Routes() {
     <BrowserRouter>
       <ReactRouterRoutes>
         <Route path="/*" element={<Login />} />
-        <Route path="/search" element={
+        <Route path="/books" element={
           <PrivateRoute>
             <Search />
           </PrivateRoute>}
