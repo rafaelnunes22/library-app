@@ -40,8 +40,8 @@ declare module '*.png' {
 }
 
 declare module '*.webp' {
-    const src: string;
-    export default src;
+  const src: string;
+  export default src;
 }
 
 declare module '*.svg' {
@@ -68,4 +68,14 @@ declare module '*.module.scss' {
 declare module '*.module.sass' {
   const classes: { readonly [key: string]: string };
   export default classes;
+}
+
+type Book = {
+  id?: string;
+  title: string;
+  description: string;
+  image_url: string;
+  release_date: Date;
+  is_rented: boolean;
+  user_id?: string;
 }

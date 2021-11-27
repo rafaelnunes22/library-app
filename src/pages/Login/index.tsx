@@ -19,6 +19,7 @@ export function Login() {
 
   const { user, token } = useAppSelector((state) => state.user.value);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (token) {
@@ -26,7 +27,7 @@ export function Login() {
     }
   }, [user])
 
-  const dispatch = useAppDispatch();
+
 
   return (
     <Wrapper>
