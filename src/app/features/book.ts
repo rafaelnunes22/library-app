@@ -40,8 +40,16 @@ export function getAll(): AppThunk {
 export function rent(book: Book): AppThunk {
   return async function (dispatch: AppDispatch) {
     await api.put("update", book).then((response: any) => {
-      console.log(response)
       dispatch(setBook(response.data));
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
+}
+
+export function remove(id: string): AppThunk {
+  return async function () {
+    await api.delete(`delete/${id}`).then((response: any) => {
     }).catch((err) => {
       console.log(err)
     })

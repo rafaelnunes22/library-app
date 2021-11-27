@@ -10,8 +10,12 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
-  justify-content: center;
+  justify-content: inherit;
   align-items: center;
+  
+  @media(min-width: 1024px) {
+    justify-content: center;
+  }
 `;
 
 export const Container = styled.div`
@@ -21,9 +25,12 @@ export const Container = styled.div`
   align-items: center;
   height: 800px;
   width: 100%;
+  margin-top: 100px;
 
   @media(min-width: 1024px) {
   flex-direction: row;
+  margin-top: 0;
+
   }
 `;
 
@@ -33,6 +40,8 @@ export const RightBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  text-align: center;
 
   height: 400px;
   width: 100%;
@@ -45,9 +54,15 @@ export const RightBox = styled.div`
 
 `;
 
+export const LeftBox = styled.div`
+`;
+
+
+
 export const Image = styled.img`
   height: 400px;
   width: 300px;
+  margin-bottom: 10px;
 `;
 
 export const Title = styled.h3`
@@ -67,10 +82,8 @@ export const Strong = styled.strong`
 
 export const IConButton = styled.button`
   position: absolute;
-  top: 24px;
-  right: 24px;
-  height: 50px;
-  width: 50px;
+  top: 10px;
+  right: 10px;
 
   background: transparent;
   border: none;
@@ -88,6 +101,8 @@ export const IConButton = styled.button`
   }
 
   @media(min-width: 1024px) {
+    height: 50px;
+    width: 50px;
     top: 0;
     right: 0;
     height: 0;

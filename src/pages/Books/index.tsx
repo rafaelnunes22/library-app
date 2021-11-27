@@ -25,6 +25,11 @@ export function Books() {
   const [searchTerm, setSearchTerm] = useState<string>("");
 
   useEffect(() => {
+    dispatch(getAll());
+    dispatch(setBook({}));
+  }, [])
+
+  useEffect(() => {
     setBookList(books);
   }, [books]);
 

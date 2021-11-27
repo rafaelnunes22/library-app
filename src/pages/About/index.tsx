@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { getAll, rent } from "../../app/features/book";
+import { remove, rent } from "../../app/features/book";
 
 import { Button as ComponentButton } from "../../components/Button";
 
@@ -12,6 +12,7 @@ import {
   Wrapper,
   Container,
   RightBox,
+  LeftBox,
   Image,
   Title,
   Description,
@@ -39,7 +40,15 @@ export function About() {
   return (
     <Wrapper >
       <Container>
-        <Image src={currentBook?.image_url} />
+        <LeftBox>
+          <Image src={currentBook?.image_url} />
+          <ComponentButton onClick={() => {
+            currentBook?.id && dispatch(remove(currentBook.id))
+            navigate(-1)
+          }} disabled={currentBook?.is_rented}>
+            {currentBook?.is_rented ? "Cannot be removed" : "Remove book"}
+          </ComponentButton>
+        </LeftBox>
         <RightBox>
           <IConButton onClick={() => navigate(-1)}><img src={ReturnIcon} height={50} /></IConButton>
           <Title>{currentBook?.title}</Title>
