@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { login } from "../../app/features/user";
 
@@ -16,10 +17,13 @@ export function Login() {
   const [password, setPassword] = useState("");
 
 
-  const user = useAppSelector((state) => state.user.value);
+  const { user, token } = useAppSelector((state) => state.user.value);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(user, "USER")
+    if (token) {
+      navigate("/search")
+    }
   }, [user])
 
   const dispatch = useAppDispatch();

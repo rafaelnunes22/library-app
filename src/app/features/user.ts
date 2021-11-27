@@ -11,7 +11,6 @@ export const userSlice = createSlice({
         id: 0,
         username: "",
         name: "",
-        token: ""
       },
       token: "",
     }
@@ -26,7 +25,6 @@ export const userSlice = createSlice({
           id: 0,
           username: "",
           name: "",
-          token: ""
         },
         token: "",
       }
