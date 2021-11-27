@@ -6,8 +6,8 @@ import { Button as ComponentButton } from "../../components/Button";
 
 export const Wrapper = styled.div`
   display: flex;
+  flex-direction: column;
   
-  height: 100vh;
 `;
 
 export const SearchContainer = styled.div`
@@ -17,7 +17,8 @@ export const SearchContainer = styled.div`
 
   gap: 24px;
   height: 0;
-  padding: 48px;
+  padding-top: 48px;
+  padding-bottom: 64px;
 
 
   width: 100%;
@@ -33,6 +34,18 @@ export const Input = styled(ComponentInput)`
 
 export const Button = styled(ComponentButton)`
 width: 30%;
+`;
+
+export const BookContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+
+  flex-wrap: wrap;
+
+  height: 100%;
+  width: 100%;
+  background-color: green;
 `;
 
 
