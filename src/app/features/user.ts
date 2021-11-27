@@ -8,7 +8,7 @@ export const userSlice = createSlice({
   initialState: {
     value: {
       user: {
-        id: 0,
+        id: "",
         username: "",
         name: "",
       },
@@ -22,7 +22,7 @@ export const userSlice = createSlice({
     logout: (state, action) => {
       state.value = {
         user: {
-          id: 0,
+          id: "",
           username: "",
           name: "",
         },

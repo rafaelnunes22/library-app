@@ -1,6 +1,7 @@
 import React, { ReactElement } from "react";
 import { Login } from "./pages/Login";
-import { Search } from "./pages/Books";
+import { Books } from "./pages/Books";
+import { About } from "./pages/About";
 import { useAppSelector } from "./app/hooks";
 
 import { BrowserRouter, Routes as ReactRouterRoutes, Route, RouteProps, Navigate } from "react-router-dom";
@@ -21,7 +22,12 @@ export function Routes() {
         <Route path="/*" element={<Login />} />
         <Route path="/books" element={
           <PrivateRoute>
-            <Search />
+            <Books />
+          </PrivateRoute>}
+        />
+        <Route path="/about" element={
+          <PrivateRoute>
+            <About />
           </PrivateRoute>}
         />
       </ReactRouterRoutes>

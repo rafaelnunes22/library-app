@@ -11,7 +11,6 @@ export const Wrapper = styled.div`
 export const ButtonContainer = styled.button`
   height: 300px;
   width: 200px;
-  background-color: red;
 
   border: none;
   border-radius: 10px;

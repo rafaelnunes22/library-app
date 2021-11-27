@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { getAll } from "../../app/features/book";
+import React, { useCallback, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
+import { useAppSelector, useAppDispatch } from "../../app/hooks";
+import { getAll, setBook } from "../../app/features/book";
 
 import { Card } from "../../components/Card";
+
 
 import {
   Wrapper,
@@ -13,26 +15,31 @@ import {
   BookContainer,
 } from "./styles";
 
-export function Search() {
+export function Books() {
 
   const { books } = useAppSelector((state) => state.book.value);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const [bookList, setBookList] = useState<Book[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
 
-
   useEffect(() => {
     setBookList(books);
-  }, [books])
+  }, [books]);
+
+  const handleCardClick = useCallback((book: Book) => {
+    dispatch(setBook(book));
+    navigate("/about");
+  }, [])
 
   return (
-    <Wrapper>
+    <Wrapper >
       <SearchContainer>
         <Input placeholder="Search by title" onChange={(e) => setSearchTerm(e.target.value)} />
         <Button onClick={() => dispatch(getAll())}>Search</Button>
       </SearchContainer>
-      <BookContainer>
+      <BookContainer style={{ overflow: "hidden" }}>
         {bookList.filter((filteredBook) => {
           if (searchTerm == "") {
             return filteredBook;
@@ -40,7 +47,7 @@ export function Search() {
             return filteredBook;
           }
         }).map((book: Book, index: number) => {
-          return <Card key={index} title={book.title} image_url={book.image_url} />
+          return <Card key={index} title={book.title} image_url={book.image_url} onClick={() => handleCardClick(book)} />
         })}
       </BookContainer>
     </Wrapper>);

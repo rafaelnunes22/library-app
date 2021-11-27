@@ -19,17 +19,13 @@ export const SearchContainer = styled.div`
   height: 0;
   padding-top: 48px;
   padding-bottom: 64px;
-
-
   width: 100%;
-
 `;
 
 export const Input = styled(ComponentInput)`
   color: white;
   padding: none;
   margin: 0;
-
 `;
 
 export const Button = styled(ComponentButton)`
@@ -39,13 +35,12 @@ width: 30%;
 export const BookContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-
+  justify-content: center;
+  gap: 32px;
   flex-wrap: wrap;
 
   height: 100%;
   width: 100%;
-  background-color: green;
 `;
 
 
