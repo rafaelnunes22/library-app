@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { login } from "../../app/features/user";
 
@@ -12,8 +12,15 @@ import {
 } from "./styles";
 
 export function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
 
   const user = useAppSelector((state) => state.user.value);
+
+  useEffect(() => {
+    console.log(user, "USER")
+  }, [user])
 
   const dispatch = useAppDispatch();
 
@@ -21,13 +28,9 @@ export function Login() {
     <Wrapper>
       <Container>
         <Title>Login</Title>
-        <Input placeholder="Username" />
-        <Input placeholder="Password" />
-        <Button onClick={() => dispatch(login({
-          id: 0,
-          username: "falatu",
-          name: "cabron",
-        }))}>Login</Button>
+        <Input onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
+        <Input onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+        <Button onClick={() => dispatch(login(username, password))}>Login</Button>
       </Container>
     </Wrapper>
 
