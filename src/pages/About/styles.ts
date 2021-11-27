@@ -16,22 +16,32 @@ export const Wrapper = styled.div`
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 
+  align-items: center;
   height: 800px;
   width: 100%;
+
+  @media(min-width: 1024px) {
+  flex-direction: row;
+  }
 `;
 
-export const LeftBox = styled.div`
-  display: flex;
+export const RightBox = styled.div`
   flex-direction: column;
+
+  display: flex;
   align-items: center;
   justify-content: center;
 
-  height: 800px;
-  width: 400px;
+  height: 400px;
+  width: 100%;
   padding-right: 20px;
   padding-left: 20px;
+
+  @media(min-width: 1024px) {
+    position: relative;
+  }
 
 `;
 
@@ -53,6 +63,38 @@ export const Description = styled.p`
 
 export const Strong = styled.strong`
   color:white;
+`;
+
+export const IConButton = styled.button`
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  height: 50px;
+  width: 50px;
+
+  background: transparent;
+  border: none;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: transparent;
+    opacity: 0.8;
+  }
+
+  &:active {
+    background-color: transparent;
+    opacity: 0.6;
+  }
+
+  @media(min-width: 1024px) {
+    top: 0;
+    right: 0;
+    height: 0;
+    border: none;
+  }
+
+
 `;
 
 

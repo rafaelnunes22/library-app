@@ -1,26 +1,30 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { getAll, rent } from "../../app/features/book";
 
-import { Button } from "../../components/Button";
+import { Button as ComponentButton } from "../../components/Button";
+
+import ReturnIcon from "../../icons/return.svg";
 
 
 import {
   Wrapper,
   Container,
-  LeftBox,
+  RightBox,
   Image,
   Title,
   Description,
-  Strong
+  Strong,
+  IConButton
 } from "./styles";
 
 export function About() {
   const { id } = useAppSelector((state) => state.user.value.user);
   const { book } = useAppSelector((state) => state.book.value);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
-  // const [bookList, setBook] = useState<Book>({});
   const [currentBook, setCurrentBook] = useState<Book>();
 
   useEffect(() => {
@@ -28,27 +32,29 @@ export function About() {
   }, [book])
 
   const formatDate = useCallback((date: Date) => {
-    return new Date().toLocaleDateString("pt-BR");
+    return new Date(date).toLocaleDateString("pt-BR");
   }, [currentBook?.release_date]);
 
 
   return (
     <Wrapper >
       <Container>
-        <LeftBox>
-          <Image src={currentBook?.image_url} />
+        <Image src={currentBook?.image_url} />
+        <RightBox>
+          <IConButton onClick={() => navigate(-1)}><img src={ReturnIcon} height={50} /></IConButton>
           <Title>{currentBook?.title}</Title>
           <Description>{currentBook?.description}</Description>
           <Strong>Release date: </Strong>
           <Description>{currentBook && formatDate(currentBook?.release_date)}</Description>
-          <Button
+          <ComponentButton
             onClick={() => dispatch(rent({
               ...currentBook!,
               is_rented: !currentBook?.is_rented,
               user_id: !currentBook?.is_rented ? undefined : id
             }))}
-          >{currentBook?.is_rented ? "Return the book" : "Rent now!"}</Button>
-        </LeftBox>
+            disabled={currentBook?.is_rented}
+          >{currentBook?.is_rented ? "Just rented" : "Rent now!"}</ComponentButton>
+        </RightBox>
       </Container>
     </Wrapper>);
 }

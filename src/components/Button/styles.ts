@@ -20,7 +20,7 @@ export const Button = styled.button`
   padding-top: 18px;
   padding-bottom: 18px;
   
-  &:hover {
+  &:hover:not(:disabled) {
     border-color: white;
 
     background-color: white;
@@ -37,6 +37,11 @@ export const Button = styled.button`
 
     transition: 200ms;
     opacity: 0.8;
+  }
+
+  &:disabled {
+    background: red;
+    border: none;
   }
 `;
 
