@@ -6,7 +6,6 @@ import { getAll, setBook } from "../../app/features/book";
 
 import { Card } from "../../components/Card";
 
-
 import {
   Wrapper,
   SearchContainer,
@@ -42,7 +41,7 @@ export function Books() {
     <Wrapper >
       <SearchContainer>
         <Input placeholder="Search by title" onChange={(e) => setSearchTerm(e.target.value)} />
-        <Button onClick={() => dispatch(getAll())}>Search</Button>
+        <Button onClick={() => navigate("/book-form")}>New book</Button>
       </SearchContainer>
       <BookContainer style={{ overflow: "hidden" }}>
         {bookList.filter((filteredBook) => {

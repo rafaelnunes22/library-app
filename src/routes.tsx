@@ -5,6 +5,7 @@ import { About } from "./pages/About";
 import { useAppSelector } from "./app/hooks";
 
 import { BrowserRouter, Routes as ReactRouterRoutes, Route, RouteProps, Navigate } from "react-router-dom";
+import { BookForm } from "./pages/BookForm";
 
 type Props = {
   children: ReactElement;
@@ -28,6 +29,11 @@ export function Routes() {
         <Route path="/about" element={
           <PrivateRoute>
             <About />
+          </PrivateRoute>}
+        />
+        <Route path="/book-form" element={
+          <PrivateRoute>
+            <BookForm />
           </PrivateRoute>}
         />
       </ReactRouterRoutes>

@@ -41,7 +41,7 @@ export function About() {
     <Wrapper >
       <Container>
         <LeftBox>
-          <Image src={currentBook?.image_url} />
+          <Image src={currentBook?.image_url} alt={currentBook?.title} />
           <ComponentButton onClick={() => {
             currentBook?.id && dispatch(remove(currentBook.id))
             navigate(-1)

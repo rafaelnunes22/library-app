@@ -8,7 +8,9 @@ export const Input = styled.input`
   font-size: 20px;
   background-color: transparent;
   color: white;
-
+  ::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
   width: 100%;
 
   border: none;

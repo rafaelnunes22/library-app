@@ -79,3 +79,11 @@ type Book = {
   is_rented: boolean;
   user_id?: string;
 }
+
+type BookResponse = {
+  result: Book;
+  reqResponse: {
+    status: number;
+    message: string;
+  }
+}
