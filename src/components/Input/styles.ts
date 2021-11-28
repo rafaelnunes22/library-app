@@ -15,8 +15,6 @@ export const Input = styled.input`
 
   border: none;
   outline: none;
-
-  
 `;
 
 export const Hr = styled.hr`

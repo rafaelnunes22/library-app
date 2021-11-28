@@ -1,11 +1,5 @@
 import styled from "styled-components";
 
-import { Input as ComponentInput } from "../../components/Input";
-import { Button as ComponentButton } from "../../components/Button";
-
-import { Card as CardComponent } from "../../components/Card";
-
-
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -14,7 +8,7 @@ export const Wrapper = styled.div`
   align-items: center;
   
   @media(min-width: 1024px) {
-    justify-content: center;
+    justify-content: flex-end;
   }
 `;
 
@@ -22,14 +16,25 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
   align-items: center;
-  height: 800px;
+
+  padding: 20px;
+
+  height: 100%;
   width: 100%;
   margin-top: 100px;
 
+  background-color: black;
+
   @media(min-width: 1024px) {
   flex-direction: row;
+  align-items: flex-start;
+  
   margin-top: 0;
+  height: 800px;
+
 
   }
 `;
@@ -56,8 +61,6 @@ export const RightBox = styled.div`
 
 export const LeftBox = styled.div`
 `;
-
-
 
 export const Image = styled.img`
   height: 400px;

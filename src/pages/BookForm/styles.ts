@@ -1,37 +1,32 @@
 import styled from "styled-components";
 
-import { Input as ComponentInput } from "../../components/Input";
-import { Button as ComponentButton } from "../../components/Button";
-
-import { Card as CardComponent } from "../../components/Card";
-
-
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
-  justify-content: inherit;
+  justify-content: flex-end;
   align-items: center;
-  
-  @media(min-width: 1024px) {
-    justify-content: center;
-  }
 `;
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  align-items: center;
+  align-items: flex-start;
   height: 800px;
   width: 100%;
+
   margin-top: 100px;
-  
+  padding: 20px;
+
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+
+  background-color: black;
 
   @media(min-width: 1024px) {
   flex-direction: row;
   margin-top: 0;
-
   }
 `;
 
@@ -46,17 +41,15 @@ export const RightBox = styled.div`
 
   height: 400px;
   width: 100%;
-  padding-right: 20px;
-  padding-left: 20px;
-  padding-top: 0;
 
   gap: 20px;
   
   @media(min-width: 1024px) {
+    padding-right: 20px;
+    padding-left: 20px;
     padding-top: 36px;
     position: relative;
   }
-
 `;
 
 export const LeftBox = styled.div`
