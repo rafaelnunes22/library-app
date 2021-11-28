@@ -5,6 +5,9 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   margin-bottom: 10px;
+  width: 200px;
+
+  overflow-wrap: break-word;
 `;
 
 export const ButtonContainer = styled.button`
