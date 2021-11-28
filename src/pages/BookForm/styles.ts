@@ -62,7 +62,7 @@ export const LeftBox = styled.div`
   justify-content: center;
 
   @media(min-width: 1024px) {
-    width: 500px;
+    width: 450px;
   }
 `;
 
