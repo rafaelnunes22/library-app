@@ -4,8 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { getAll, setBook, setResponse, } from "../../app/features/book";
 import { logout } from "../../app/features/user";
-
-
 import { Card } from "../../components/Card";
 
 import {

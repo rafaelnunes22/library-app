@@ -8,8 +8,6 @@ import { Button as ComponentButton } from "../../components/Button";
 import ReturnIcon from "../../icons/return.svg";
 import EditIcon from "../../icons/dots.svg";
 
-
-
 import {
   Wrapper,
   Container,

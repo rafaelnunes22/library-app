@@ -1,4 +1,4 @@
-import { HTMLAttributes, InputHTMLAttributes } from "react";
+import { HTMLAttributes } from "react";
 import { Button } from "./styles";
 
 type Props = { disabled?: boolean } & HTMLAttributes<HTMLButtonElement>;

@@ -14,8 +14,6 @@ import {
   RightBox,
   LeftBox,
   Image,
-  Title,
-  Description,
   Strong,
   BottomBox,
   IconButton
@@ -33,7 +31,6 @@ export function BookForm() {
   const [title, setTitle] = useState<Book["title"]>("");
   const [description, setDescription] = useState<Book["description"]>("");
   const [releaseDate, setReleaseDate] = useState<string>("");
-  const [responseState, setResponseState] = useState<BookResponse["reqResponse"]>({ message: "", status: 0 })
 
   const [isMissingFields, setIsMissingFields] = useState<boolean>(false);
 

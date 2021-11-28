@@ -1,4 +1,4 @@
-import { Fragment, InputHTMLAttributes, ReactElement } from "react";
+import { InputHTMLAttributes } from "react";
 import { Wrapper, Input, Hr } from "./styles";
 
 type Props = InputHTMLAttributes<HTMLInputElement>;
