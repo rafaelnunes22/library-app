@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   
   height: 100vh;
@@ -15,10 +15,12 @@ export const Container = styled.div`
   align-items: center;
   gap: 24px;
 
+  height: 70%;
   padding: 48px;
 
-  border: 2px solid white;
-  border-radius:  20px;
+  border-top-left-radius:  20px;
+  border-top-right-radius:  20px;
+
   width: 100%;
 
   background-color: black;
@@ -29,6 +31,12 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h1`
+  color: white;
+  padding: none;
+  margin: 0;
+`;
+
+export const Message = styled.h4`
   color: white;
   padding: none;
   margin: 0;

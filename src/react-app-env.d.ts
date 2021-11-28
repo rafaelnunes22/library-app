@@ -70,6 +70,13 @@ declare module '*.module.sass' {
   export default classes;
 }
 
+type User = {
+  id?: string;
+  username: string;
+  password?: string;
+  avatar_url: string;
+}
+
 type Book = {
   id?: string;
   title: string;
@@ -86,4 +93,13 @@ type BookResponse = {
     status: number;
     message: string;
   }
+}
+
+type UserResponse = {
+  result: User;
+  reqResponse: {
+    status: number;
+    message: string;
+  },
+  token: string;
 }

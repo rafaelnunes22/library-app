@@ -9,15 +9,15 @@ import { Button } from "../../components/Button";
 import {
   Wrapper,
   Container,
-  Title
+  Title,
+  Message
 } from "./styles";
 
 export function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-
-  const { user, token } = useAppSelector((state) => state.user.value);
+  const { user, token, response } = useAppSelector((state) => state.user.value);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -27,8 +27,6 @@ export function Login() {
     }
   }, [user])
 
-
-
   return (
     <Wrapper>
       <Container>
@@ -36,6 +34,7 @@ export function Login() {
         <Input onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
         <Input type="password" onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
         <Button onClick={() => dispatch(login(username, password))}>Login</Button>
+        {response?.status === 401 ? <Message>{response.message}</Message> : null}
       </Container>
     </Wrapper>
 

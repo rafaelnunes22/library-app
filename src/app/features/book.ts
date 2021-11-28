@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { AppThunk } from '../hooks';
 import { AppDispatch } from '../store';
 import api from "../../api";
@@ -35,30 +35,28 @@ export default bookSlice.reducer;
 
 export function getAll(): AppThunk {
   return async function (dispatch: AppDispatch) {
-    await api.get("getAll").then((response: any) => {
-      dispatch(setBooks(response.data));
-    }).catch((err) => {
-      console.log(err)
-    })
+    await api.get("getAll").then((response: AxiosResponse<BookResponse>) => {
+      dispatch(setBooks(response.data.result));
+      dispatch(setResponse(response.data.reqResponse));
+    });
   }
 }
 
-export function rent(book: Book): AppThunk {
+export function update(book: Book): AppThunk {
   return async function (dispatch: AppDispatch) {
-    await api.put("update", book).then((response: any) => {
-      dispatch(setBook(response.data));
-    }).catch((err) => {
-      console.log(err)
-    })
+    await api.put("update", book).then((response: AxiosResponse<BookResponse>) => {
+      if (response.data.reqResponse.status <= 201) {
+        dispatch(setBook(response.data.result));
+      }
+      dispatch(setResponse(response.data.reqResponse));
+    });
   }
 }
 
 export function remove(id: string): AppThunk {
   return async function () {
-    await api.delete(`delete/${id}`).then((response: any) => {
-    }).catch((err) => {
-      console.log(err)
-    })
+    await api.delete(`delete/${id}`).then((response: AxiosResponse<BookResponse>) => {
+    });
   }
 }
 
@@ -66,8 +64,6 @@ export function create(book: Book): AppThunk {
   return async function (dispatch: AppDispatch) {
     await api.post("create", book).then((response: AxiosResponse<BookResponse>) => {
       dispatch(setResponse(response.data.reqResponse));
-    }).catch((err) => {
-      console.log(err)
-    })
+    });
   }
 }

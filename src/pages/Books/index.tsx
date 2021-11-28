@@ -2,7 +2,9 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { getAll, setBook } from "../../app/features/book";
+import { getAll, setBook, setResponse, } from "../../app/features/book";
+import { logout } from "../../app/features/user";
+
 
 import { Card } from "../../components/Card";
 
@@ -16,7 +18,7 @@ import {
 
 export function Books() {
 
-  const { books } = useAppSelector((state) => state.book.value);
+  const { books, response } = useAppSelector((state) => state.book.value);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -26,6 +28,7 @@ export function Books() {
   useEffect(() => {
     dispatch(getAll());
     dispatch(setBook({}));
+    dispatch(setResponse({}));
   }, [])
 
   useEffect(() => {
@@ -42,6 +45,7 @@ export function Books() {
       <SearchContainer>
         <Input placeholder="Search by title" onChange={(e) => setSearchTerm(e.target.value)} />
         <Button onClick={() => navigate("/book-form")}>New book</Button>
+        <Button onClick={() => dispatch(logout())}>Logout</Button>
       </SearchContainer>
       <BookContainer style={{ overflow: "hidden" }}>
         {bookList.filter((filteredBook) => {

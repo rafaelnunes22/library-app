@@ -2,37 +2,45 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk } from '../hooks';
 import { AppDispatch } from '../store';
 import api from "../../api";
+import { AxiosResponse } from 'axios';
 
 export const userSlice = createSlice({
   name: "user",
   initialState: {
     value: {
-      user: {
-        id: "",
-        username: "",
-        name: "",
-      },
-      token: "",
+      user: <User>{},
+      token: <string>"",
+      response: {
+        status: <number>0,
+        message: <string>""
+      }
     }
   },
   reducers: {
     setUser: (state, action) => {
       state.value = action.payload;
     },
-    logout: (state, action) => {
+    logout: (state) => {
       state.value = {
         user: {
           id: "",
           username: "",
-          name: "",
+          avatar_url: "",
         },
         token: "",
+        response: {
+          status: 0,
+          message: ""
+        }
       }
-    }
+    },
+    setResponse: (state, action) => {
+      state.value.response = action.payload;
+    },
   }
 });
 
-export const { setUser, logout } = userSlice.actions;
+export const { setUser, logout, setResponse } = userSlice.actions;
 
 export default userSlice.reducer;
 
@@ -41,10 +49,11 @@ export function login(username: string, password: string): AppThunk {
     await api.post("authenticate", {
       username,
       password
-    }).then((response: any) => {
-      dispatch(setUser(response.data))
-    }).catch((err) => {
-      console.log(err)
-    })
+    }).then((response: AxiosResponse<UserResponse>) => {
+      if (response.data.reqResponse.status <= 201) {
+        dispatch(setUser(response.data.result))
+      }
+      dispatch(setResponse(response.data.reqResponse))
+    });
   }
 }

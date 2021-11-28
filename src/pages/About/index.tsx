@@ -1,11 +1,13 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { remove, rent } from "../../app/features/book";
+import { remove, update, setResponse } from "../../app/features/book";
 
 import { Button as ComponentButton } from "../../components/Button";
 
 import ReturnIcon from "../../icons/return.svg";
+import EditIcon from "../../icons/dots.svg";
+
 
 
 import {
@@ -17,7 +19,8 @@ import {
   Title,
   Description,
   Strong,
-  IConButton
+  ReturnIconButton,
+  EditIconButton
 } from "./styles";
 
 export function About() {
@@ -29,13 +32,13 @@ export function About() {
   const [currentBook, setCurrentBook] = useState<Book>();
 
   useEffect(() => {
+    dispatch(setResponse({}));
     setCurrentBook(book);
   }, [book])
 
   const formatDate = useCallback((date: Date) => {
     return new Date(date).toLocaleDateString("pt-BR");
   }, [currentBook?.release_date]);
-
 
   return (
     <Wrapper >
@@ -50,13 +53,14 @@ export function About() {
           </ComponentButton>
         </LeftBox>
         <RightBox>
-          <IConButton onClick={() => navigate(-1)}><img src={ReturnIcon} height={50} /></IConButton>
+          <ReturnIconButton title="Return" onClick={() => navigate(-1)}><img src={ReturnIcon} height={50} /></ReturnIconButton>
+          <EditIconButton title="Edit" onClick={() => navigate("/book-form")}><img src={EditIcon} height={50} /></EditIconButton>
           <Title>{currentBook?.title}</Title>
           <Description>{currentBook?.description}</Description>
           <Strong>Release date: </Strong>
           <Description>{currentBook && formatDate(currentBook?.release_date)}</Description>
           <ComponentButton
-            onClick={() => dispatch(rent({
+            onClick={() => dispatch(update({
               ...currentBook!,
               is_rented: !currentBook?.is_rented,
               user_id: !currentBook?.is_rented ? undefined : id

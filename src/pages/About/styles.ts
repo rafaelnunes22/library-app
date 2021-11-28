@@ -80,7 +80,7 @@ export const Strong = styled.strong`
   color:white;
 `;
 
-export const IConButton = styled.button`
+export const ReturnIconButton = styled.button`
   position: absolute;
   top: 10px;
   right: 10px;
@@ -108,8 +108,36 @@ export const IConButton = styled.button`
     height: 0;
     border: none;
   }
+`;
 
+export const EditIconButton = styled.button`
+  position: absolute;
+  top: 10px;
+  left: 10px;
 
+  background: transparent;
+  border: none;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: transparent;
+    opacity: 0.8;
+  }
+
+  &:active {
+    background-color: transparent;
+    opacity: 0.6;
+  }
+
+  @media(min-width: 1024px) {
+    height: 50px;
+    width: 50px;
+    top: 0;
+    left: 0;
+    height: 0;
+    border: none;
+  }
 `;
 
 

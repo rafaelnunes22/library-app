@@ -48,9 +48,12 @@ export const RightBox = styled.div`
   width: 100%;
   padding-right: 20px;
   padding-left: 20px;
+  padding-top: 0;
+
   gap: 20px;
   
   @media(min-width: 1024px) {
+    padding-top: 36px;
     position: relative;
   }
 
@@ -58,12 +61,16 @@ export const RightBox = styled.div`
 
 export const LeftBox = styled.div`
   height: 400px;
-  width: 500px;
+  width: 100%;
   border: 2px solid white;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media(min-width: 1024px) {
+    width: 500px;
+  }
 `;
 
 export const Image = styled.img`
@@ -86,7 +93,15 @@ export const Strong = styled.strong`
   color: white;
 `;
 
-export const IConButton = styled.button`
+export const BottomBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  width: 100%;
+  gap: 10px;
+`;
+
+export const IconButton = styled.button`
   position: absolute;
   top: 10px;
   right: 10px;
@@ -115,16 +130,6 @@ export const IConButton = styled.button`
     border: none;
   }
 `;
-
-export const BottomBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100px;
-  width: 100%;
-  gap: 10px;
-`;
-
-
 
 
 
