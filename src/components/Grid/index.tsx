@@ -6,7 +6,7 @@ type Props = {
 };
 
 function LayoutGrid({ children }: Props) {
-  return <Grid >
+  return <Grid role="grid" >
     <GridItem>
       {children}
     </GridItem>

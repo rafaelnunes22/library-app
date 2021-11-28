@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { remove, update, create, setResponse } from "../../app/features/book";
+import { update, create, setResponse } from "../../app/features/book";
 
 import { Button as ComponentButton } from "../../components/Button";
 
